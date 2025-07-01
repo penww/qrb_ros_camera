@@ -1,16 +1,34 @@
-# QRB ROS CAMERA
+<div align="center">
+  <h1>QRB ROS Camera</h1>
+  <p align="center">
+   <img src="https://s7d1.scene7.com/is/image/dmqualcommprod/rb3gen2-dev-kits-hero-7" alt="Qualcomm QRB ROS" title="Qualcomm QRB ROS" />
+      
+  </p>
+  <p>ROS wrapper for camera on Qualcomm robotics platforms.</p>
+  
+  <a href="https://ubuntu.com/download/qualcomm-iot" target="_blank"><img src="https://img.shields.io/badge/Qualcomm%20Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Qualcomm Ubuntu"></a>
+  <a href="https://docs.ros.org/en/jazzy/" target="_blank"><img src="https://img.shields.io/badge/ROS%20Jazzy-1c428a?style=for-the-badge&logo=ros&logoColor=white" alt="Jazzy"></a>
+  
+</div>
+<br>
+<br>
 
-## Overview
+<div align="center">
 
-`qrb_ros_camera` is a ROS package to publish the camera data from camera sensor.
+<a href="https://www.qualcomm.com/developer/hardware/rb3-gen-2-development-kit" target="_blank"><img src="https://img.shields.io/badge/RB3%20gen%202%20Vision%20Kit-2a2aea?style=for-the-badge&logo=qualcomm&logoColor=white" alt="RB3 Gen2 Vision Kit"></a>
+<a href="https://www.qualcomm.com/developer/hardware/rb3-gen-2-development-kit" target="_blank"><img src="https://img.shields.io/badge/RB3%20gen%202%20Lite%20Vision%20Kit-2a2aea?style=for-the-badge&logo=qualcomm&logoColor=white" alt="RB3 Gen2 Vision Lite Kit"></a>
 
-`qrb_ros_camera` holds significant importance as it serves as a critical component for numerous other ROS nodes that 
-rely on image data for analysis and processing. By providing images in the NV12 format, it enables seamless integration 
-with a wide range of ROS nodes, empowering advanced image-based analysis and functionalities within the ROS ecosystem.
 
-`qrb_ros_camera` features zero-copy transport for reduced latency, facilitating swift image transmission. It also 
-supports concurrent output from multiple cameras, enhancing system performance and scalability in real-time ROS 
-applications.
+</div>
+
+**QRB ROS Camera** is a ROS package to publish the camera data from Qualcomm camera sensors. It provides:
+- Concurrent multiple streams output support
+- Composable node support
+- Zero copy data transport powered by **QRB ROS Transport**
+
+It provides images in the NV12 format, it enables seamless integration with a wide range of ROS nodes, empowering advanced image-based analysis and functionalities within the ROS ecosystem.
+
+Check out the [CHANGELOG](CHANGELOG.md) for detailed updates and fixes.
 
 ## Quick Start
 
