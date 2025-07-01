@@ -11,7 +11,6 @@
   
 </div>
 <br>
-<br>
 
 <div align="center">
 
@@ -26,91 +25,74 @@
 - Composable node support
 - Zero copy data transport powered by **QRB ROS Transport**
 
-It provides images in the NV12 format, it enables seamless integration with a wide range of ROS nodes, empowering advanced image-based analysis and functionalities within the ROS ecosystem.
-
 Check out the [CHANGELOG](CHANGELOG.md) for detailed updates and fixes.
 
-## Quick Start
+---
 
-> **Note：**
-> This document 's build & run is the latest.
-> If it conflict with the online document, please follow this.
 
-We provide two ways to use this package.
+## Installation
 
-<details>
-<summary>Docker</summary>
+Add Qualcomm IOT PPA for ubuntu:
 
-#### Setup
-1. Please follow this [steps](https://github.com/qualcomm-qrb-ros/qrb_ros_docker?tab=readme-ov-file#quickstart) to setup docker env.
-2. Download qrb_ros_camera and dependencies
-    ```bash
-    cd ${QRB_ROS_WS}/src
-
-    git clone https://github.com/qualcomm-qrb-ros/lib_mem_dmabuf.git
-    git clone https://github.com/qualcomm-qrb-ros/qrb_ros_camera.git
-    git clone https://github.com/qualcomm-qrb-ros/qrb_ros_transport.git
-    ```
-
-#### Build
 ```bash
-colcon build --packages-up-to qrb_ros_camera
+sudo add-apt-repository ppa:ubuntu-qcom-iot/qirp
+sudo apt update
 ```
 
-#### Run
-```bash
-cd ${QRB_ROS_WS}/src
+Install Debian package:
 
-source install/local_setup.sh
+```bash
+sudo apt install ros-jazzy-qrb-ros-camera
+```
+
+## Usage
+
+### Start the camera node
+
+```bash
 ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 ```
 
-</details>
+### Parameters
+
+#### Avaliable Parameters:
+
+- **camera_id**:
+  - The camera device ID
+  - Can be set to *0*, *1*, *2*
+  - Default value: `0`
  
+- **log_level**
+  - Log level for ROS node
+  - Can be set to *DEBUG*
+  - Default value: `DEBUG`
 
-<details>
-<summary>QIRP-SDK</summary>
+---
 
-#### Setup
-1. Please follow this [steps](https://qualcomm-qrb-ros.github.io/main/getting_started/environment_setup.html) to setup qirp-sdk env.
-2. Download qrb_ros_imu and dependencies
-    ```bash
-    mkdir -p <qirp_decompressed_workspace>/qirp-sdk/ros_ws
-    cd <qirp_decompressed_workspace>/qirp-sdk/ros_ws
+## Build from Source
 
-    git clone https://github.com/qualcomm-qrb-ros/qrb_ros_camera.git
-    ```
+Install dependencies
 
-#### Build
-1. Build the project
-    ```bash
-    colcon build --continue-on-error --cmake-args ${CMAKE_ARGS}
-    ```
-2. Install the package
-    ```bash
-    cd <qirp_decompressed_workspace>/qirp-sdk/ros_ws/install/qrb_ros_camera
-    tar -czvf qrb_ros_camera.tar.gz include lib share
-    scp qrb_ros_camera.tar.gz root@[ip-addr]:/home/
-    cd <qirp_decompressed_workspace>/qirp-sdk/ros_ws/install/qrb_camera
-    tar -czvf qrb_camera.tar.gz include lib share
-    scp qrb_camera.tar.gz root@[ip-addr]:/home/
-    (ssh) mount -o remount rw /usr
-    (ssh) tar --no-overwrite-dir --no-same-owner -zxf /home/qrb_camera.tar.gz -C /usr/
-    (ssh) tar --no-overwrite-dir --no-same-owner -zxf /home/qrb_ros_camera.tar.gz -C /usr/
-    ```
-
-#### Run
 ```bash
-(ssh) source /usr/share/qirp-setup.sh
-(ssh) setenforce 0
-(ssh) ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
+sudo apt install ros-jazzy-qrb-ros-transport-image-type
 ```
 
-</details>
+Download source code and build with colcon
+```bash
+git clone https://github.com/qualcomm-qrb-ros/qrb_ros_camera.git
+colcon build
+```
 
-<br>
+Run and debug
 
-You can get more details from [here](https://qualcomm-qrb-ros.github.io/main/index.html).
+```bash
+source install/setup.bash
+ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
+```
+
+---
+
+
 
 ## Supported Platforms
 
