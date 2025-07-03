@@ -33,7 +33,7 @@ Here is the list of all supported targets based on [Qualcomm Ubuntu](https://ubu
   </tr>
   <tr>
     <td><a href="https://www.qualcomm.com/developer/hardware/rb3-gen-2-development-kit">
-      <img src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_600,h_338/https://assets.ubuntu.com/v1/346869e6-QCS6490-bg-solid.png" width="200"/>
+      <img src="https://s7d1.scene7.com/is/image/dmqualcommprod/rb3-gen2-carousel?fmt=webp-alpha&qlt=85" width="200"/>
     </a></td>
     <td><a><img></a></td>
     <td><a><img></a></td>
@@ -130,11 +130,11 @@ source install/setup.bash
 ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 ```
 
-## 💪 Contributing
+## 🤝 Contributing
 
 We love community contributions! Get started by reading our [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## ♥️ Contributors
+## ❤️ Contributors
 
 Thanks to all our contributors who have helped make this project better!
 
@@ -145,7 +145,7 @@ Thanks to all our contributors who have helped make this project better!
   </tr>
 </table>
 
-## 📃 License
+## 📜 License
 
-Project is licensed under the [BSD-3-Clause License](https://spdx.org/licenses/BSD-3-Clause.html). See [LICENSE](./LICENSE) for the full license text.
+Project is licensed under the [BSD-3-Clause](https://spdx.org/licenses/BSD-3-Clause.html) License. See [LICENSE](./LICENSE) for the full license text.
 
