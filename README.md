@@ -13,8 +13,6 @@
 
 ---
 
-
-
 ## 👋 Overview
 
 The QRB ROS Camera is a ROS package to publish the images from Qualcomm CSI cameras. It provides:
@@ -23,49 +21,7 @@ The QRB ROS Camera is a ROS package to publish the images from Qualcomm CSI came
 - Composable ROS node support
 - Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport)
 
-Check out the [CHANGELOG](CHANGELOG.md) for detailed updates and fixes.
-
----
-
-## ✨ Installation
-
-Add Qualcomm IOT PPA for Ubuntu:
-
-```bash
-sudo add-apt-repository ppa:ubuntu-qcom-iot/qirp
-sudo apt update
-```
-
-Install Debian package:
-
-```bash
-sudo apt install ros-jazzy-qrb-ros-camera
-```
-
-## 🚀 Usage
-
-### Start the camera node
-
-```bash
-source /opt/ros/jazzy/setup.bash
-ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
-```
-
-### Parameters
-
-#### Avaliable Parameters:
-
-- **camera_id**:
-  - The camera device ID
-  - Can be set to *0*, *1*, *2*
-  - Default value: `0`
- 
-- **log_level**
-  - Log level for ROS node
-  - Can be set to *DEBUG*
-  - Default value: `DEBUG`
-
-## 🎯 Supported Targets
+#### Supported Targets
 
 Here is the list of all supported targets based on [Qualcomm Ubuntu](https://ubuntu.com/download/qualcomm-iot). 
 
@@ -85,6 +41,71 @@ Here is the list of all supported targets based on [Qualcomm Ubuntu](https://ubu
 </table>
 
 For Qualcomm Linux, check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
+
+---
+
+## ✨ Installation
+
+Add Qualcomm IOT PPA for Ubuntu:
+
+```bash
+add-apt-repository ppa:ubuntu-qcom-iot/qcom-noble-ppa
+sudo add-apt-repository ppa:ubuntu-qcom-iot/qirp
+sudo apt update
+```
+
+Install Debian package:
+
+```bash
+sudo apt install ros-jazzy-qrb-ros-camera
+```
+
+## 🚀 Usage
+
+### Start the camera node
+
+```bash
+source /opt/ros/jazzy/setup.bash
+ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
+```
+
+### ROS Interfaces
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>/image_raw</td>
+    <td>sensor_msgs/msg/Image</td>
+    <td>output image</td>
+  </tr>
+</table>
+
+### ROS Parameters
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</td>
+    <th>Default Value</td>
+  </tr>
+  <tr>
+    <td>camera_id</td>
+    <td>int64</td>
+    <td>The camera device ID</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>log_level</td>
+    <td>string</td>
+    <td>The log level</td>
+    <td>DEBUG</td>
+  </tr>
+</table>
 
 ---
 
