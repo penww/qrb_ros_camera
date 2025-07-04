@@ -71,6 +71,8 @@ ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 
 ### ROS Interfaces
 
+#### ROS Topic
+
 <table>
   <tr>
     <th>Name</th>
@@ -81,6 +83,11 @@ ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
     <td>/image_raw</td>
     <td>sensor_msgs/msg/Image</td>
     <td>output image</td>
+  </tr>
+  <tr>
+    <td>/camera_info</td>
+    <td>sensor_msgs/msg/CameraInfo</td>
+    <td>camera information</td>
   </tr>
 </table>
 
