@@ -70,7 +70,7 @@ source /opt/ros/jazzy/setup.bash
 ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 ```
 
-### ROS Interfaces
+### ROS interfaces
 
 <table>
   <tr>
@@ -93,7 +93,7 @@ ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
   </tr>
 </table>
 
-### ROS Parameters
+### ROS parameters
 
 <table>
   <tr>
