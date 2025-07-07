@@ -15,7 +15,7 @@
 
 ## 👋 Overview
 
-The QRB ROS Camera is a ROS package to publish the images from Qualcomm CSI cameras. It provides:
+The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a ROS package to publish the images from Qualcomm CSI cameras. It provides:
 
 - Concurrent multiple streams output support
 - Composable ROS node support
@@ -23,24 +23,25 @@ The QRB ROS Camera is a ROS package to publish the images from Qualcomm CSI came
 
 #### Supported Targets
 
-Here is the list of all supported targets based on [Qualcomm Ubuntu](https://ubuntu.com/download/qualcomm-iot). 
-
-<table>
+<table >
+  <col width="120" />
+  <col width="120" />
+  <col width="200" />
   <tr>
     <th>RB3 Gen2</td>
     <th>RB8</td>
     <th>RB4</td>
   </tr>
   <tr>
-    <td><a href="https://www.qualcomm.com/developer/hardware/rb3-gen-2-development-kit">
-      <img src="https://s7d1.scene7.com/is/image/dmqualcommprod/rb3-gen2-carousel?fmt=webp-alpha&qlt=85" width="200"/>
-    </a></td>
-    <td><a><img></a></td>
-    <td><a><img></a></td>
+    <td><a href="https://www.qualcomm.com/developer/hardware/rb3-gen-2-development-kit"><img src="https://s7d1.scene7.com/is/image/dmqualcommprod/rb3-gen2-carousel?fmt=webp-alpha&qlt=85" width="160"/></a></td>
+    <td><a href="https://www.qualcomm.com/products/internet-of-things/industrial-processors/iq9-series/iq-9075"><img src="https://s7d1.scene7.com/is/image/dmqualcommprod/dragonwing-IQ-9075-EVK?$QC_Responsive$&fmt=png-alpha" width="160"></a></td>
+    <td>&nbsp;&nbsp;&nbsp;<a href="https://www.qualcomm.com/dragonwing"><img src="https://s7d1.scene7.com/is/image/dmqualcommprod/iterim-glass-chip?$QC_Responsive$&fmt=png-alpha" width="120"></a>&nbsp;&nbsp;&nbsp;</td>
   </tr>
 </table>
 
-For Qualcomm Linux, check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
+> [!NOTE]
+> This project developed and tested based on [Qualcomm® Ubuntu](https://ubuntu.com/download/qualcomm-iot) and [ROS Jazzy](https://docs.ros.org/en/jazzy/index.html). <br>
+> For Qualcomm Linux, please to check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
 
 ---
 
@@ -49,7 +50,7 @@ For Qualcomm Linux, check out [Qualcomm Intelligent Robotics Product SDK](https:
 Add Qualcomm IOT PPA for Ubuntu:
 
 ```bash
-add-apt-repository ppa:ubuntu-qcom-iot/qcom-noble-ppa
+sudo add-apt-repository ppa:ubuntu-qcom-iot/qcom-noble-ppa
 sudo add-apt-repository ppa:ubuntu-qcom-iot/qirp
 sudo apt update
 ```
@@ -71,21 +72,22 @@ ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 
 ### ROS Interfaces
 
-#### ROS Topic
-
 <table>
   <tr>
+    <th>Interface</th>
     <th>Name</th>
     <th>Type</th>
     <td>Description</td>
   </tr>
   <tr>
-    <td>/image_raw</td>
+    <td>Publisher</td>
+    <td>/cam${camera_id}_${stream_name}</td>
     <td>sensor_msgs/msg/Image</td>
     <td>output image</td>
   </tr>
   <tr>
-    <td>/camera_info</td>
+    <td></td>
+    <td>/cam${camera_id}_camera_info</td>
     <td>sensor_msgs/msg/CameraInfo</td>
     <td>camera information</td>
   </tr>
@@ -105,6 +107,24 @@ ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
     <td>int64</td>
     <td>The camera device ID</td>
     <td>0</td>
+  </tr>
+  <tr>
+    <td>stream_size</td>
+    <td>uint64</td>
+    <td>Count of camera stream</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>stream_name</td>
+    <td>string[]</td>
+    <td>camera stream names</td>
+    <td>stream${camera_id}</td>
+  </tr>
+  <tr>
+    <td>camera_info_path</td>
+    <td>string</td>
+    <td>Camera metadata file path</td>
+    <td>config/camera_info_imx577.yaml</td>
   </tr>
   <tr>
     <td>log_level</td>
@@ -139,7 +159,8 @@ ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 
 ## 🤝 Contributing
 
-We love community contributions! Get started by reading our [CONTRIBUTING.md](CONTRIBUTING.md).
+We love community contributions! Get started by reading our [CONTRIBUTING.md](CONTRIBUTING.md).<br>
+Feel free to create issue for bug report, feature request or any discussion💡.
 
 ## ❤️ Contributors
 
