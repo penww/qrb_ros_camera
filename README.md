@@ -15,11 +15,12 @@
 
 ## 👋 Overview
 
-The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a ROS package to publish the images from Qualcomm CSI cameras. It provides:
+The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a ROS package to publish the images from Qualcomm CSI and GMSL cameras. It provides:
 
 - Concurrent multiple streams output support
 - Composable ROS node support
 - Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport)
+- Output NV12 format
 
 #### Supported Targets
 
@@ -37,11 +38,22 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
     <td><a href="https://www.qualcomm.com/products/internet-of-things/industrial-processors/iq9-series/iq-9075"><img src="https://s7d1.scene7.com/is/image/dmqualcommprod/dragonwing-IQ-9075-EVK?$QC_Responsive$&fmt=png-alpha" width="160"></a></td>
     <td>&nbsp;&nbsp;&nbsp;<a href="https://www.qualcomm.com/dragonwing"><img src="https://s7d1.scene7.com/is/image/dmqualcommprod/iterim-glass-chip?$QC_Responsive$&fmt=png-alpha" width="120"></a>&nbsp;&nbsp;&nbsp;</td>
   </tr>
+  <tr>
+    <th>which camera in this platform? GMSL/CSI</td>
+    <th>RB8</td>
+    <th>RB4</td>
+  </tr>
 </table>
 
 > [!NOTE]
 > This project developed and tested based on [Qualcomm® Ubuntu](https://ubuntu.com/download/qualcomm-iot) and [ROS Jazzy](https://docs.ros.org/en/jazzy/index.html). <br>
 > For Qualcomm Linux, please to check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
+
+#### Architecture Diagrams
+
+
+
+#### Add introduction for all modules, such as qrb_camera
 
 ---
 
@@ -69,6 +81,10 @@ sudo apt install ros-jazzy-qrb-ros-camera
 source /opt/ros/jazzy/setup.bash
 ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 ```
+
+What does it do in this commands? open camera 0 , with which resolution? how to configure resolution ?
+
+### Example for how to enable multiple streams
 
 ### ROS interfaces
 
@@ -136,7 +152,7 @@ ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 
 ---
 
-## 👨‍💻 Build from Source
+## 👨‍💻 Build from Source (Only for Ubuntu)
 
 Install dependencies
 
@@ -146,6 +162,7 @@ sudo apt install ros-jazzy-qrb-ros-transport-image-type
 
 Download source code and build with colcon
 ```bash
+source /opt/ros/jazzy/setup.bash
 git clone https://github.com/qualcomm-qrb-ros/qrb_ros_camera.git
 colcon build
 ```
