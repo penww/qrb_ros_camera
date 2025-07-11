@@ -33,16 +33,18 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
 - The module `qmmf_camera` used to call `QMMF SDK` apis to manage qmmf streams.
 
 ## 🔎 Table of contents
-  * [ROS APIS](#-ros-apis)
+  * [ROS APIs](#-ros-apis)
+     * [ROS interfaces](#ros-interfaces)
+     * [ROS parameters](#ros-parameters)
   * [Supported Targets](#-supported-targets)
   * [Installation](#-installation)
   * [Usage](#-usage)
      * [Starting the camera node](#start-the-camera-node)
-     * [Enable mutiple streams](#enable-multiple-stream)
-     * [Enable zero copy transport](#enable-zero-copy transport)
+     * [Enable mutiple streams](#enable-multiple-streams)
+     * [Enable zero copy transport](#enable-zero-copy-transport)
   * [Build from Source](#-build-from-source)
   * [Contributing](#-contributing)
-  * [Contributors](#-contributors)
+  * [Contributors](#%EF%B8%8F-contributors)
   * [FAQ](#-faq)
   * [License](#-license)
 
