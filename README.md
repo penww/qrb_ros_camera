@@ -156,8 +156,9 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
 ## ✨ Installation
 
 > [!IMPORTANT]
-> **PREREQUISITES**: Follow steps run on Qualcomm Ubuntu and ROS Jazzy, reference [Install Ubuntu on Qualcomm IoT Platforms](https://ubuntu.com/download/qualcomm-iot) and [Install ROS Jazzy](https://docs.ros.org/en/jazzy/index.html). <br>
->   For Qualcomm Linux, please to check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
+> **PREREQUISITES**: Follow steps run on Qualcomm Ubuntu and ROS Jazzy.<br>
+> Reference [Install Ubuntu on Qualcomm IoT Platforms](https://ubuntu.com/download/qualcomm-iot) and [Install ROS Jazzy](https://docs.ros.org/en/jazzy/index.html) to setup environment. <br>
+> For Qualcomm Linux, please to check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
 
 Add Qualcomm IOT PPA for Ubuntu:
 
