@@ -191,7 +191,7 @@ Then you can check ROS topics or view image with topic `/cam${camera_id}_${strea
 ```bash
 ros2 topic list
 /cam0_stream1
-/camera_info
+/cam0_camera_info
 ```
 
 ### Enable multiple streams
