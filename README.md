@@ -22,7 +22,7 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 - Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport).
 - Only support output NV12 format，limited by QMMF SDK.
 
-#### Project Architecture
+#### Project architecture
 
 <div align="center">
   <img src="./docs/assets/architecture.png" alt="architecture">
@@ -40,13 +40,13 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
   * [ROS APIs](#-ros-apis)
      * [ROS interfaces](#ros-interfaces)
      * [ROS parameters](#ros-parameters)
-  * [Supported Targets](#-supported-targets)
+  * [Supported targets](#-supported-targets)
   * [Installation](#-installation)
   * [Usage](#-usage)
      * [Starting the camera node](#start-the-camera-node)
      * [Enable mutiple streams](#enable-multiple-streams)
      * [Enable zero copy transport](#enable-zero-copy-transport)
-  * [Build from Source](#-build-from-source)
+  * [Build from source](#-build-from-source)
   * [Contributing](#-contributing)
   * [Contributors](#%EF%B8%8F-contributors)
   * [FAQ](#-faq)
@@ -130,7 +130,7 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
   </tr>
 </table>
 
-## 🎯 Supported Targets
+## 🎯 Supported targets
 
 <table >
   <tr>
@@ -295,7 +295,7 @@ def generate_launch_description():
 
 ---
 
-## 👨‍💻 Build from Source
+## 👨‍💻 Build from source
 
 Install dependencies
 
