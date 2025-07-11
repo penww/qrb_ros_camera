@@ -24,7 +24,9 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 
 #### Project Architecture
 
-![Architecture](./docs/assets/architecture.png)
+<div align="center">
+  <img src="./docs/assets/architecture.png" alt="architecture" width=800>
+</div>
 
 The `qrb_ros_camera` is the ROS2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. It supports node composition, make it avaliable to improve performance using ROS intra process.
 
