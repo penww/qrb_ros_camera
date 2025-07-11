@@ -186,6 +186,23 @@ When use this launch script, it will use default parameters:
 
 It opens the camera `0`, with `1` stream, the resolution is `1920 x 1080`, and outputs image in `30` HZ. 
 
+The output for these commands:
+
+```bash
+[INFO] [launch]: All log files can be found below /home/ubuntu/.ros/log/2025-07-11-08-33-27-770692-ubuntu-13833
+[INFO] [launch]: Default logging verbosity is set to INFO
+/opt/ros/jazzy/share/qrb_ros_camera/config/camera_info_imx577.yaml
+[INFO] [component_container_mt-1]: process started with pid [788455]
+[component_container_mt-1] [INFO] [1738523640.352029048] [my_container]: Load Library: /opt/ros/jazzy/lib/libcamera_node.so
+[component_container_mt-1] [INFO] [1738523640.391541131] [my_container]: Found class: rclcpp_components::NodeFactoryTemplate<qrb_ros::camera::CameraNode>
+[component_container_mt-1] [INFO] [1738523640.391636496] [my_container]: Instantiate class: rclcpp_components::NodeFactoryTemplate<qrb_ros::camera::CameraNode>
+[component_container_mt-1] [INFO] [1738523640.407687277] [cam0_node]: QRB Camera Node statrt
+[component_container_mt-1] [INFO] [1738523640.408260298] [cam0_node]: load camera intrinsic param
+[component_container_mt-1] [INFO] [1738523640.422302798] [cam0_node]: system time: 263304942972212 ros time: 1738523640422300871 time offset: 1738260335479328659 ns
+[component_container_mt-1] [INFO] [1738523640.424454465] [cam0_node]: QRB Camera Node init success
+...
+```
+
 Then you can check ROS topics or view image with topic `/cam${camera_id}_${stream_name}` in RVIZ or RQT.
 
 ```bash
