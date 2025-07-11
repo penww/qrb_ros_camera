@@ -22,13 +22,15 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 - Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport)
 - Output NV12 format
 
+#### Project Architecture
 
+![Architecture](./docs/assets/architecture.png)
 
-#### Architecture Diagrams
+The `qrb_ros_camera` is the ROS2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. <It supports [composition feature](https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Composition.html), avaliabled to improve performance using ROS intra process.
 
-![Architecture](./docs/architecture.png)
-
-#### Add introduction for all modules, such as qrb_camera
+The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` to query images from under layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
+- The module `camera_manager` modules to manage camera stream, which enables multiple stream support.
+- The module `qmmf_camera` used to call `QMMF SDK` apis to manage qmmf streams.
 
 ## ROS APIs
 
