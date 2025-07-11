@@ -15,12 +15,12 @@
 
 ## 👋 Overview
 
-The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a ROS package to publish the images from Qualcomm CSI and GMSL cameras. It provides:
+The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a ROS package to publish the images from Qualcomm **CSI** and **GMSL** cameras. It provides:
 
-- Concurrent multiple streams output support
-- Composable ROS node support
-- Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport)
-- Only support output NV12 format，limited by QMMF SDK
+- Concurrent multiple streams output support.
+- Composable ROS node support.
+- Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport).
+- Only support output NV12 format，limited by QMMF SDK.
 
 #### Project Architecture
 
