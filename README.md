@@ -28,7 +28,7 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 
 The `qrb_ros_camera` is the ROS2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. <It supports [composition feature](https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Composition.html), avaliabled to improve performance using ROS intra process.
 
-The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` to query images from under layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
+The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from under layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
 - The module `camera_manager` modules to manage camera stream, which enables multiple stream support.
 - The module `qmmf_camera` used to call `QMMF SDK` apis to manage qmmf streams.
 
@@ -158,7 +158,9 @@ What does it do in this commands? open camera 0 , with which resolution? how to 
 
 ### Enable multiple streams
 
-
+```bash
+# TODO
+```
 
 
 ---
