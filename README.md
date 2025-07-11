@@ -139,9 +139,9 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
 
 ## ✨ Installation
 
-> [!NOTE]
-> Follow steps only apply to [Qualcomm® Ubuntu](https://ubuntu.com/download/qualcomm-iot) and [ROS Jazzy](https://docs.ros.org/en/jazzy/index.html). <br>
-> For Qualcomm Linux, please to check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
+> [!IMPORTANT]
+> **PREREQUISITES**: Run follow steps need [Qualcomm® Ubuntu](https://ubuntu.com/download/qualcomm-iot) and [ROS Jazzy](https://docs.ros.org/en/jazzy/index.html). <br>
+>   For Qualcomm Linux, please to check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
 
 Add Qualcomm IOT PPA for Ubuntu:
 
@@ -186,6 +186,14 @@ When use this launch script, it will use default parameters:
 
 It opens the camera `0`, with `1` stream, the resolution is `1920 x 1080`, and outputs image in `30` HZ. 
 
+Then you can check ROS topics or view image with topic `/cam${camera_id}_${stream_name}` in RVIZ or RQT.
+
+```bash
+ros2 topic list
+/cam0_stream1
+/camera_info
+```
+
 ### Enable multiple streams
 
 Use `stream_size` and `stream_name` parameters, we can configure multiple stream for one camera.
@@ -217,7 +225,7 @@ Use `stream_size` and `stream_name` parameters, we can configure multiple stream
 
 The detail for this feature can reference: https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Composition.html
 
-We recommend use launch to composite multiple nodes:
+We recommend to use `launch` to composite multiple nodes:
 
 ```python
 def generate_launch_description():
@@ -286,6 +294,13 @@ Thanks to all our contributors who have helped make this project better!
     <td align="center"><a href="https://github.com/quic-zhanlin"><img src="https://avatars.githubusercontent.com/u/88314584?v=4" width="100" height="100" alt="quic-zhanlin"/><br /><sub><b>quic-zhanlin</b></sub></a></td>
   </tr>
 </table>
+
+## ❔ FAQ
+
+<details>
+<summary>Why not support rgb format image?</summary>
+<li>NV12 format is the original format from Qualcomm CamX, if need rgb image, can use color convert node.</li> 
+</details>
 
 ## 📜 License
 
