@@ -26,6 +26,8 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 
 #### Architecture Diagrams
 
+![Architecture](./docs/architecture.png)
+
 #### Add introduction for all modules, such as qrb_camera
 
 ## ROS APIs
