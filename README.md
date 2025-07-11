@@ -28,6 +28,8 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
   <img src="./docs/assets/architecture.png" alt="architecture">
 </div>
 
+<br>
+
 The `qrb_ros_camera` is the ROS2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. It supports node composition, make it avaliable to improve performance using ROS intra process.
 
 The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from under layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
