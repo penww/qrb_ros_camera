@@ -32,7 +32,7 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
 - The module `camera_manager` used to manage camera stream, which enables multiple stream support.
 - The module `qmmf_camera` used to call `QMMF SDK` apis to manage qmmf streams.
 
-## ROS APIs
+## ⚓ ROS APIs
 
 ### ROS interfaces
 
@@ -110,7 +110,7 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
   </tr>
 </table>
 
-## Supported Targets
+## 🎯 Supported Targets
 
 <table >
   <tr>
