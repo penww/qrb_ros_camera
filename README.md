@@ -20,16 +20,16 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 - Concurrent multiple streams output support
 - Composable ROS node support
 - Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport)
-- Output NV12 format
+- Only support output NV12 format，limited by QMMF SDK
 
 #### Project Architecture
 
 ![Architecture](./docs/assets/architecture.png)
 
-The `qrb_ros_camera` is the ROS2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. <It supports [composition feature](https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Composition.html), avaliabled to improve performance using ROS intra process.
+The `qrb_ros_camera` is the ROS2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. It supports node composition, make it avaliable to improve performance using ROS intra process.
 
 The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from under layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
-- The module `camera_manager` modules to manage camera stream, which enables multiple stream support.
+- The module `camera_manager` used to manage camera stream, which enables multiple stream support.
 - The module `qmmf_camera` used to call `QMMF SDK` apis to manage qmmf streams.
 
 ## ROS APIs
@@ -82,19 +82,31 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
     <td>stream_name</td>
     <td>string[]</td>
     <td>camera stream names</td>
-    <td>stream${camera_id}</td>
+    <td>["stream1"]</td>
+  </tr>
+  <tr>
+    <td>${stream_name}.width</td>
+    <td>uint32</td>
+    <td>image width</td>
+    <td>1920</td>
+  </tr>  
+  <tr>
+    <td>${stream_name}.height</td>
+    <td>uint32</td>
+    <td>image height</td>
+    <td>1080</td>
+  </tr>
+  <tr>
+    <td>${stream_name}.fps</td>
+    <td>uint32</td>
+    <td>output image frequence(HZ)</td>
+    <td>30</td>
   </tr>
   <tr>
     <td>camera_info_path</td>
     <td>string</td>
     <td>Camera metadata file path</td>
     <td>config/camera_info_imx577.yaml</td>
-  </tr>
-  <tr>
-    <td>log_level</td>
-    <td>string</td>
-    <td>The log level</td>
-    <td>DEBUG</td>
   </tr>
 </table>
 
@@ -103,8 +115,8 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
 <table >
   <tr>
     <th>Development Hardware</th>
-    <th>Qualcomm Dragonwing™ RB3 Gen2</th>
-    <th>Qualcomm Dragonwing™ IQ-9075 EVK</th>
+    <td>Qualcomm Dragonwing™ RB3 Gen2</td>
+    <td>Qualcomm Dragonwing™ IQ-9075 EVK</td>
   </tr>
   <tr>
     <th>Hardware Overview</th>
@@ -154,14 +166,86 @@ source /opt/ros/jazzy/setup.bash
 ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 ```
 
-What does it do in this commands? open camera 0 , with which resolution? how to configure resolution ?
+When use this launch script, it will use default parameters:
+
+```py
+ parameters=[{
+    'camera_id': 0,
+    'stream_size': 1,
+    'stream_name': ["stream1"],
+    'stream1':{
+        'height':1080,
+        'width':1920,
+        'fps':30,
+    },
+    'camera_info_path': os.path.join(
+        get_package_share_directory('qrb_ros_camera'),
+        'config', 'camera_info_imx577.yaml'),
+}]
+```
+
+It opens the camera `0`, with `1` stream, the resolution is `1920 x 1080`, and outputs image in `30` HZ. 
 
 ### Enable multiple streams
 
+Use `stream_size` and `stream_name` parameters, we can configure multiple stream for one camera.
+
 ```bash
-# TODO
+ parameters=[{
+    'camera_id': 0,
+    'stream_size': 2,
+    'stream_name': ["stream1", "stream2"],
+    'stream1':{
+        'width':1920,
+        'height':1080,
+        'fps':30,
+    },
+    'stream2':{
+        'width':1080,
+        'height':720,
+        'fps':60,
+    },
+    'camera_info_path': os.path.join(
+        get_package_share_directory('qrb_ros_camera'),
+        'config', 'camera_info_imx577.yaml'),
+}]
 ```
 
+### Enable zero copy transport
+
+`qrb_ros_camera` support directly share image `dmabuf_fd` between nodes, this can avoid image data memory copy with DDS.
+
+The detail for this feature can reference: https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Composition.html
+
+We recommend use launch to composite multiple nodes:
+
+```python
+def generate_launch_description():
+    container = ComposableNodeContainer(
+        name='my_container',
+        namespace='',
+        package='rclcpp_components',
+        executable='component_container',
+        composable_node_descriptions=[
+            ComposableNode(
+                package='qrb_ros_camera',
+                plugin='qrb_ros::camera::CameraNode',
+                name='camera_node',
+                parameters=[{
+                    # ...
+                }]
+            ),
+            ComposableNode(
+                package='qrb_ros_camera',
+                plugin='qrb_ros::camera::TestNode',
+                name='sub_node',
+            )
+        ],
+        output='screen',
+    )
+
+    return launch.LaunchDescription([container])
+```
 
 ---
 
