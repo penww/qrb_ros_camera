@@ -20,7 +20,7 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 - Concurrent multiple streams output support.
 - Composable ROS node support.
 - Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport).
-- Only support output NV12 format，limited by QMMF SDK.
+- Only support outputs in NV12 format，limited by the QMMF SDK.
 
 #### Project architecture
 
@@ -30,15 +30,15 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 
 <br>
 
-The [`qrb_ros_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_ros_camera) is ROS 2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. It supports node composition, make it avaliable to improve performance using ROS intra process.
+The [`qrb_ros_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_ros_camera) is a ROS 2 package. It creates an image publisher with qrb_ros_transport for zero-copy transport. It supports node composition, making it possible to improve performance using ROS intra-process communication.
 
-The [`qrb_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_camera) is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from under layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
+The [`qrb_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_camera) is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from lower layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
 - The module `camera_manager` used to manage camera stream, which enables multiple stream support.
-- The module `qmmf_camera` used to call `QMMF SDK` apis to manage qmmf streams.
+- The module `qmmf_camera` used to call `QMMF SDK` apis to manage QMMF streams.
 
-The [`qrb_ros_transport`](https://github.com/qualcomm-qrb-ros/qrb_ros_transport) is ROS 2 package, it support zero copy image transport with Linux DMA buffer, and implement ROS type adaption, make it compatible both intra and inter process communication. 
+The [`qrb_ros_transport`](https://github.com/qualcomm-qrb-ros/qrb_ros_transport) is a ROS 2 package, it supports zero-copy image transport with Linux DMA buffer and implements ROS type adaption, make it compatible with both intra- and inter-process communication. 
 
-The `QMMF SDK` is Qualcomm multimedia framework, it exports APIs for accessing Qualcomm multimedia hardwares.
+The `QMMF SDK` is Qualcomm multimedia framework, it exports APIs for accessing Qualcomm multimedia hardware.
 
 The `CamX` provides the foundation for image capture, processing, and management on Qualcomm-powered devices.
 
@@ -127,7 +127,7 @@ The `CamX` provides the foundation for image capture, processing, and management
   <tr>
     <td>${stream_name}.fps</td>
     <td>uint32</td>
-    <td>output image frequence(HZ)</td>
+    <td>output image frequency(Hz)</td>
     <td>30</td>
   </tr>
   <tr>
@@ -139,7 +139,7 @@ The `CamX` provides the foundation for image capture, processing, and management
 </table>
 
 > [!Note]
-> The parameter value should be set accroding to real camera hardware capabilities.
+> The parameter values should be set accroding to the actual camera hardware capabilities.
 
 ### 🔹 `qrb_camera` APIs
 
@@ -152,32 +152,32 @@ The `CamX` provides the foundation for image capture, processing, and management
   <tr>
     <td>int create_camera(CameraType type, uint32_t camera_id)</td>
     <td>type: camera type, camera_id: camera id</td>
-    <td>Create camera, return the camera index when success</td>
+    <td>Creates a camera and returns the camera index on success.</td>
   </tr>
   <tr>
     <td>bool set_camera_parameter(int index, CameraConfigure & param)</td>
     <td>index: camera index,  param: camera parameters</td>
-    <td>Return  true when set the camera param successfully</td>
+    <td>Returns true when the camera parameters are set successfully.</td>
   </tr>
   <tr>
     <td>bool start_camera(int index)</td>
     <td>index: camera index </td>
-    <td>Start camera. Return true when start  successfully</td>
+    <td>Starts the camera. Returns true when started successfully.</td>
   </tr>
   <tr>
     <td>void stop_camera(int index)</td>
     <td>index: camera index </td>
-    <td>Stop  the camera</td>
+    <td>Stop the camera</td>
   </tr>
   <tr>
     <td>bool register_callback(int index, ImageCallback image_cb, PointCloudCallback point_cloud_cb)</td>
     <td>index: camera index，Image_cb: image callback，Point_cloud_cb: point cloud msg callback </td>
-    <td>Register the callback for image  msg & point cloud msg callback</td>
+    <td>Registers the callback for image and point cloud messages.</td>
   </tr>
 </table>
 
 > [!Note]
-> The parameter value should be set accroding to real camera hardware capabilities.
+> The parameter values should be set accroding to the actual camera hardware capabilities.
 
 ## 🎯 Supported targets
 
@@ -209,9 +209,9 @@ The `CamX` provides the foundation for image capture, processing, and management
 ## ✨ Installation
 
 > [!IMPORTANT]
-> **PREREQUISITES**: Follow steps need to be run on **Qualcomm Ubuntu** and **ROS Jazzy**.<br>
+> **PREREQUISITES**: The following steps need to be run on **Qualcomm Ubuntu** and **ROS Jazzy**.<br>
 > Reference [Install Ubuntu on Qualcomm IoT Platforms](https://ubuntu.com/download/qualcomm-iot) and [Install ROS Jazzy](https://docs.ros.org/en/jazzy/index.html) to setup environment. <br>
-> For Qualcomm Linux, please to check out [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
+> For Qualcomm Linux, please check out the [Qualcomm Intelligent Robotics Product SDK](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-265/introduction_1.html?vproduct=1601111740013072&version=1.4&facet=Qualcomm%20Intelligent%20Robotics%20Product%20(QIRP)%20SDK) documents.
 
 Add Qualcomm IOT PPA for Ubuntu:
 
@@ -236,7 +236,7 @@ source /opt/ros/jazzy/setup.bash
 ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 ```
 
-When use this launch script, it will use default parameters:
+When using this launch script, it will use the default parameters:
 
 ```py
  parameters=[{
@@ -254,7 +254,7 @@ When use this launch script, it will use default parameters:
 }]
 ```
 
-It opens the camera `0`, with `1` stream, the resolution is `1920 x 1080`, and outputs image in `30` HZ. 
+It opens camera `0`, with `1` stream, using a resolution of `1920 x 1080`, and outputs image at `30` Hz. 
 
 The output for these commands:
 
@@ -273,7 +273,7 @@ The output for these commands:
 ...
 ```
 
-Then you can check ROS topics or view image with topic `/cam${camera_id}_${stream_name}` in RVIZ or RQT.
+Then you can check ROS topics or view image with the topic `/cam${camera_id}_${stream_name}` in RVIZ or RQT.
 
 ```bash
 ros2 topic list
@@ -283,7 +283,7 @@ ros2 topic list
 
 ### Enable multiple streams
 
-Use `stream_size` and `stream_name` parameters, we can configure multiple stream for one camera.
+By using the `stream_size` and `stream_name` parameters, you can configure multiple streams for one camera.
 
 ```bash
  parameters=[{
@@ -308,11 +308,11 @@ Use `stream_size` and `stream_name` parameters, we can configure multiple stream
 
 ### Enable zero copy transport
 
-The `qrb_ros_camera` support directly share image `dmabuf_fd` between nodes, this can avoid image data memory copy with DDS.
+The `qrb_ros_camera` supports directly sharing image `dmabuf_fd` between nodes, which can avoid image data memory copy with DDS.
 
-The detail for this feature can reference: https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Composition.html
+For detail about this feature, see https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Composition.html
 
-We recommend to use `launch` to composite multiple nodes:
+We recommend using `launch` to compose multiple nodes:
 
 ```python
 def generate_launch_description():
@@ -352,7 +352,7 @@ Install dependencies
 sudo apt install ros-jazzy-qrb-ros-transport-image-type
 ```
 
-Download source code and build with colcon
+Download the source code and build with colcon
 ```bash
 source /opt/ros/jazzy/setup.bash
 git clone https://github.com/qualcomm-qrb-ros/qrb_ros_camera.git
@@ -369,7 +369,7 @@ ros2 launch qrb_ros_camera qrb_ros_camera_launch.py
 ## 🤝 Contributing
 
 We love community contributions! Get started by reading our [CONTRIBUTING.md](CONTRIBUTING.md).<br>
-Feel free to create issue for bug report, feature request or any discussion💡.
+Feel free to create an issue for bug report, feature requests or any discussion💡.
 
 ## ❤️ Contributors
 
@@ -385,13 +385,13 @@ Thanks to all our contributors who have helped make this project better!
 ## ❔ FAQ
 
 <details>
-<summary>Why not support rgb format image?</summary>
-<li>NV12 format is the original format from Qualcomm camera framework, if need rgb image, can use color convert node.</li> 
+<summary>Why is RGB image format not supported?</summary>
+<li>NV12 format is the original format from the Qualcomm camera framework. If you need RGB images, you can use a color conversion node.</li> 
 </details>
 
 <details>
 <summary>Does it support USB cameras?</summary>
-<li>No, it only support MIPI-CSI and GMSL cameras, which based on CamX.</li> 
+<li>No, it only supports MIPI-CSI and GMSL cameras, which are based on CamX.</li> 
 </details>
 
 ## 📜 License
