@@ -30,16 +30,22 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 
 <br>
 
-The `qrb_ros_camera` is the ROS2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. It supports node composition, make it avaliable to improve performance using ROS intra process.
+The [`qrb_ros_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_ros_camera) is ROS 2 package, it creates image publisher with `qrb_ros_transport` for zero-copy transport. It supports node composition, make it avaliable to improve performance using ROS intra process.
 
-The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from under layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
+The [`qrb_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_camera) is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from under layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
 - The module `camera_manager` used to manage camera stream, which enables multiple stream support.
 - The module `qmmf_camera` used to call `QMMF SDK` apis to manage qmmf streams.
 
+The [`qrb_ros_transport`](https://github.com/qualcomm-qrb-ros/qrb_ros_transport) is ROS 2 package, it support zero copy image transport with Linux DMA buffer, and implement ROS type adaption, make it compatible both intra and inter process communication. 
+
+The `QMMF SDK` is Qualcomm multimedia framework, it exports APIs for accessing Qualcomm multimedia hardwares.
+
+The `CamX` provides the foundation for image capture, processing, and management on Qualcomm-powered devices.
+
 ## 🔎 Table of contents
-  * [ROS APIs](#-ros-apis)
-     * [ROS interfaces](#ros-interfaces)
-     * [ROS parameters](#ros-parameters)
+  * [APIs](#-apis)
+     * [`qrb_ros_camera` APIs](#-qrb_ros_camera-apis)
+     * [`qrb_camera` APIs](#-qrb_camera-apis)
   * [Supported targets](#-supported-targets)
   * [Installation](#-installation)
   * [Usage](#-usage)
@@ -52,9 +58,11 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
   * [FAQ](#-faq)
   * [License](#-license)
 
-## ⚓ ROS APIs
+## ⚓ APIs
 
-### ROS interfaces
+### 🔹 `qrb_ros_camera` APIs
+
+#### ROS interfaces
 
 <table>
   <tr>
@@ -77,7 +85,7 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
   </tr>
 </table>
 
-### ROS parameters
+#### ROS parameters
 
 <table>
   <tr>
@@ -128,6 +136,42 @@ The `qrb_camera` is a C++ library, it provides APIs to `qrb_ros_camera` for quer
     <td>Camera metadata file path</td>
     <td>config/camera_info_imx577.yaml</td>
   </tr>
+</table>
+
+### 🔹 `qrb_camera` APIs
+
+<table>
+  <tr>
+    <th>Function</th>
+    <th>Parameters</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>int create_camera(CameraType type, uint32_t camera_id)</td>
+    <td>type: camera type, camera_id: camera id</td>
+    <td>Create camera, return the camera index when success</td>
+  </tr>
+  <tr>
+    <td>bool set_camera_parameter(int index, CameraConfigure & param)</td>
+    <td>index: camera index,  param: camera parameters</td>
+    <td>Return  true when set the camera param successfully</td>
+  </tr>
+  <tr>
+    <td>bool start_camera(int index)</td>
+    <td>index: camera index </td>
+    <td>Start camera. Return true when start  successfully</td>
+  </tr>
+  <tr>
+    <td>void stop_camera(int index)</td>
+    <td>index: camera index </td>
+    <td>Stop  the camera</td>
+  </tr>
+  <tr>
+    <td>bool register_callback(int index, ImageCallback image_cb, PointCloudCallback point_cloud_cb)</td>
+    <td>index: camera index，Image_cb: image callback，Point_cloud_cb: point cloud msg callback </td>
+    <td>Register the callback for image  msg & point cloud msg callback</td>
+  </tr>
+
 </table>
 
 ## 🎯 Supported targets
@@ -337,7 +381,12 @@ Thanks to all our contributors who have helped make this project better!
 
 <details>
 <summary>Why not support rgb format image?</summary>
-<li>NV12 format is the original format from Qualcomm CamX, if need rgb image, can use color convert node.</li> 
+<li>NV12 format is the original format from Qualcomm camera framework, if need rgb image, can use color convert node.</li> 
+</details>
+
+<details>
+<summary>Does it support USB cameras?</summary>
+<li>No, it only support MIPI-CSI and GMSL cameras, which based on CamX.</li> 
 </details>
 
 ## 📜 License
