@@ -138,6 +138,9 @@ The `CamX` provides the foundation for image capture, processing, and management
   </tr>
 </table>
 
+> [!Note]
+> The parameter value should be set accroding to real camera hardware capabilities.
+
 ### 🔹 `qrb_camera` APIs
 
 <table>
@@ -171,8 +174,10 @@ The `CamX` provides the foundation for image capture, processing, and management
     <td>index: camera index，Image_cb: image callback，Point_cloud_cb: point cloud msg callback </td>
     <td>Register the callback for image  msg & point cloud msg callback</td>
   </tr>
-
 </table>
+
+> [!Note]
+> The parameter value should be set accroding to real camera hardware capabilities.
 
 ## 🎯 Supported targets
 
@@ -303,7 +308,7 @@ Use `stream_size` and `stream_name` parameters, we can configure multiple stream
 
 ### Enable zero copy transport
 
-`qrb_ros_camera` support directly share image `dmabuf_fd` between nodes, this can avoid image data memory copy with DDS.
+The `qrb_ros_camera` support directly share image `dmabuf_fd` between nodes, this can avoid image data memory copy with DDS.
 
 The detail for this feature can reference: https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Composition.html
 
