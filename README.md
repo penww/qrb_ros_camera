@@ -385,13 +385,13 @@ Thanks to all our contributors who have helped make this project better!
 ## ❔ FAQ
 
 <details>
-<summary>Why is RGB image format not supported?</summary>
-<li>NV12 format is the original format from the Qualcomm camera framework. If you need RGB images, you can use a color conversion node.</li> 
+<summary>Why is RGB image format not supported?</summary><br>
+NV12 format is the original format from the Qualcomm camera framework. If you need RGB images, you can use a color conversion node.
 </details>
 
 <details>
-<summary>Does it support USB cameras?</summary>
-<li>No, it only supports MIPI-CSI and GMSL cameras, which are based on CamX.</li> 
+<summary>Does it support USB cameras?</summary><br>
+No, it only supports MIPI-CSI and GMSL cameras, which are based on CamX.
 </details>
 
 ## 📜 License
