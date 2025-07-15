@@ -397,4 +397,3 @@ No, it only supports MIPI-CSI and GMSL cameras, which are based on CamX.
 ## 📜 License
 
 Project is licensed under the [BSD-3-Clause](https://spdx.org/licenses/BSD-3-Clause.html) License. See [LICENSE](./LICENSE) for the full license text.
-
