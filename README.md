@@ -20,7 +20,7 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 - Concurrent multiple streams output support.
 - Composable ROS node support.
 - Zero-Copy transport powered by [QRB ROS Transport](https://github.com/qualcomm-qrb-ros/qrb_ros_transport).
-- Only support outputs in NV12 format，limited by the QMMF SDK.
+- Only support outputs in NV12 format，limited by the Camera Service.
 
 #### Project architecture
 
@@ -32,13 +32,13 @@ The [QRB ROS Camera](https://github.com/qualcomm-qrb-ros/qrb_ros_camera) is a RO
 
 The [`qrb_ros_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_ros_camera) is a ROS 2 package. It creates an image publisher with qrb_ros_transport for zero-copy transport. It supports node composition, making it possible to improve performance using ROS intra-process communication.
 
-The [`qrb_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_camera) is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from lower layer `QMMF SDK` and `CamX` libraries. It includes 2 modules:
+The [`qrb_camera`](https://github.com/qualcomm-qrb-ros/qrb_ros_camera/tree/main/qrb_camera) is a C++ library, it provides APIs to `qrb_ros_camera` for querying images from lower layer `Camera Service` and `CamX` libraries. It includes 2 modules:
 - The module `camera_manager` used to manage camera stream, which enables multiple stream support.
-- The module `qmmf_camera` used to call `QMMF SDK` apis to manage QMMF streams.
+- The module `camera_client` used to call `Camera Service` apis to manage camera streams.
 
 The [`qrb_ros_transport`](https://github.com/qualcomm-qrb-ros/qrb_ros_transport) is a ROS 2 package, it supports zero-copy image transport with Linux DMA buffer and implements ROS type adaption, make it compatible with both intra- and inter-process communication. 
 
-The `QMMF SDK` is Qualcomm multimedia framework, it exports APIs for accessing Qualcomm multimedia hardware.
+The `Camera Service` is Qualcomm multimedia framework, it exports APIs for accessing Qualcomm multimedia hardware.
 
 The `CamX` provides the foundation for image capture, processing, and management on Qualcomm-powered devices.
 
@@ -55,7 +55,7 @@ The `CamX` provides the foundation for image capture, processing, and management
   * [Build from source](#-build-from-source)
   * [Contributing](#-contributing)
   * [Contributors](#%EF%B8%8F-contributors)
-  * [FAQ](#-faq)
+  * [FAQs](#-faqs)
   * [License](#-license)
 
 ## ⚓ APIs
@@ -382,7 +382,7 @@ Thanks to all our contributors who have helped make this project better!
   </tr>
 </table>
 
-## ❔ FAQ
+## ❔ FAQs
 
 <details>
 <summary>Why is RGB image format not supported?</summary><br>
