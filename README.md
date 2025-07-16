@@ -5,12 +5,9 @@
   </p>
   <p>${One sentence to describe your package}</p>
   
-  <a href="https://ubuntu.com/download/qualcomm-iot" target="_blank">
-    <img src="https://img.shields.io/badge/Qualcomm%20Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Qualcomm Ubuntu"/>
-  </a>
-  <a href="https://docs.ros.org/en/jazzy/" target="_blank">
-    <img src="https://img.shields.io/badge/ROS%20Jazzy-1c428a?style=for-the-badge&logo=ros&logoColor=white" alt="Jazzy"/>
-  </a>
+  <a href="https://ubuntu.com/download/qualcomm-iot" target="_blank"><img src="https://img.shields.io/badge/Qualcomm%20Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Qualcomm Ubuntu"></a>
+  <a href="https://docs.ros.org/en/jazzy/" target="_blank"><img src="https://img.shields.io/badge/ROS%20Jazzy-1c428a?style=for-the-badge&logo=ros&logoColor=white" alt="Jazzy"></a>
+  
 </div>
 
 ---
@@ -21,7 +18,7 @@
 > - Highlight key features
 > - Important information
 
-### Project Architecture
+**Project Architecture**
 
 ```
 
