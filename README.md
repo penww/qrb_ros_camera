@@ -20,12 +20,8 @@
 
 **Project Architecture**
 
-```
-
-${Architecture diagram}
-
-```
-
+> 📌 **Architecture diagrams**
+> - The high-level architecture with layers, components and relationship
 
 > 📌 **Describe the architecture diagram:**
 > - Functions of each module
