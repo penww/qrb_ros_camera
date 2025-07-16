@@ -1,25 +1,27 @@
 <div align="center">
   <h1>${Package Name}</h1>
   <p align="center">
-   ${Primary Picture} (pictures or videos to show your project demo, use case, or logo)
-      
+    ${Primary Picture} <!-- Add images or videos to showcase your project demo, use case, or logo -->
   </p>
-  <p>${One sentence to descript your package}</p>
+  <p>${One sentence to describe your package}</p>
   
-  <a href="https://ubuntu.com/download/qualcomm-iot" target="_blank"><img src="https://img.shields.io/badge/Qualcomm%20Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Qualcomm Ubuntu"></a>
-  <a href="https://docs.ros.org/en/jazzy/" target="_blank"><img src="https://img.shields.io/badge/ROS%20Jazzy-1c428a?style=for-the-badge&logo=ros&logoColor=white" alt="Jazzy"></a>
-  
+  <a href="https://ubuntu.com/download/qualcomm-iot" target="_blank">
+    <img src="https://img.shields.io/badge/Qualcomm%20Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Qualcomm Ubuntu"/>
+  </a>
+  <a href="https://docs.ros.org/en/jazzy/" target="_blank">
+    <img src="https://img.shields.io/badge/ROS%20Jazzy-1c428a?style=for-the-badge&logo=ros&logoColor=white" alt="Jazzy"/>
+  </a>
 </div>
 
 ---
 
-## 👋 Overview (Must)
+## 👋 Overview
 
-> 📌 Introduction of project
-> - highlight features
-> - important informations
+> 📌 **Introduction to the project**
+> - Highlight key features
+> - Important information
 
-#### Project architecture
+### Project Architecture
 
 ```
 
@@ -27,96 +29,97 @@ ${Architecture diagram}
 
 ```
 
-> 📌 Add description for architecture diagrams:
-> - the functions of modules
-> - the relationship between modules
-> - other information to make user easily understand the diagram
-> - ❗the module names should not internal or private names, our readers are community developers
 
+> 📌 **Describe the architecture diagram:**
+> - Functions of each module
+> - Relationships between modules
+> - Any other information to help users easily understand the diagram
+> - ❗ Module names should not use internal or private terms; please use community-friendly terminology
 
-## 🔎 Table of contents (Optional)
+## 🔎 Table of Contents (Optional)
 
-> 📌 If content is very long, we recommend add this table.
+> 📌 If the content is extensive, we recommend adding a table of contents.
 
-  * [APIs](#-apis-must)
-  * [Supported targets](#-supported-targets-must)
-  * [Installation](#-installation-must)
-  * [Usage](#-usage-must)
-  * [Build from source](#-build-from-source-must)
-  * [Contributing](#-contributing-must)
+  * [APIs](#-apis)
+  * [Supported Targets](#-supported-targets)
+  * [Installation](#-installation)
+  * [Usage](#-usage)
+  * [Build from Source](#-build-from-source)
+  * [Contributing](#-contributing)
   * [Contributors](#%EF%B8%8F-contributors-optional)
   * [FAQs](#-faqs-optional)
-  * [License](#-license-must)
+  * [License](#-license)
 
-## ⚓ APIs (Must)
+## ⚓ APIs
 
-> 📌 Need include APIs about all your packages, such as ROS APIs, C++/Python library APIs.
+> 📌 Include the APIs for all your packages, such as ROS APIs or C++/Python library APIs.
 
-### 🔹 ${ROS package} APIs
+### 🔹 ${ROS Package} APIs
 
-#### ROS interfaces
+#### ROS Interfaces
 
-> 📌 List the ROS interfaces of ROS packages
-> - which topic the packages subscribe, and which to publish, the message type?
-> - Services and actions informations.
+> 📌 List the ROS interfaces:
+> - Which topics are subscribed/published? What are the message types?
+> - Service and action information
 
-#### ROS parameters
+#### ROS Parameters
 
-> 📌 List ROS parameters in ROS packages:
-> - including parameter name, type, descriptions and default value
+> 📌 List ROS parameters:
+> - Parameter name, type, description, and default value
 
-### 🔹 ${non ROS pacakge} APIs
+### 🔹 ${Non-ROS Package} APIs
 
-> 📌 List non-ROS package APIs, such as C++ libraries
-> - only public functions, need including parameters and description.
+> 📌 List non-ROS package APIs, such as C++ libraries:
+> - Only public functions, including parameters and descriptions
 
-## 🎯 Supported targets (Must)
+## 🎯 Supported Targets
 
-> 📌 List the supported targets of this project
-> - if your package is depends on special hardware components, list them
-> - ❗the hardware and target need avaliable from outside, the image and informations need public, do not provides internal and private informations.
-
----
-
-## ✨ Installation (Must)
-
-> 📌 Introduce how to installation with Ubuntu enviroment:
-> - we do not provide steps for QCLinux, but give a link to remind developers.
-> - If need add Debian PPA or other environment settings, need add here
-
-## 🚀 Usage (Must)
-
-> 📌 Include how to use this package:
-> - what happened when the commands run?
-> - how to check the result is expect?
-> - for the advanced features, how to configure
+> 📌 List the supported hardware/targets for this project:
+> - If your package depends on specific hardware, list them
+> - ❗ Hardware and target information should be public and accessible
 
 ---
 
-## 👨‍💻 Build from source (Must)
+## ✨ Installation
 
-> 📌 How to build this package locally
-> - we only consider developer work on Ubuntu and ROS installed.
-> - how to step by step install dependencies, download source code, build project and verify own build
+> 📌 Instructions for installation in Ubuntu:
+> - We do not provide steps for QCLinux, but please add a link for developers if needed
+> - Include steps for adding Debian PPA or other environment settings if required
 
-## 🤝 Contributing (Must)
+## 🚀 Usage
 
-We love community contributions! Get started by reading our [CONTRIBUTING.md](CONTRIBUTING.md).<br>
-Feel free to create an issue for bug report, feature requests or any discussion💡.
+> 📌 How to use this package:
+> - What happens when commands are run?
+> - How to check if the result is as expected?
+> - How to configure advanced features
+
+---
+
+## 👨‍💻 Build from Source
+
+> 📌 How to build this package locally:
+> - Assume developers are using Ubuntu with ROS installed
+> - Step-by-step guide to install dependencies, download source code, build the project, and verify your build
+
+## 🤝 Contributing
+
+We love community contributions! Get started by reading our [CONTRIBUTING.md](CONTRIBUTING.md).  
+Feel free to create an issue for bug reports, feature requests, or any discussion 💡.
 
 ## ❤️ Contributors (Optional)
 
-> 📌 List the contributors of this project
+> 📌 List the contributors to this project
 
 ## ❔ FAQs (Optional)
 
-> 📌 Including the common and popular questions and answers
+> 📌 Include common and popular questions and answers
 
 <details>
-<summary>${question description}?</summary><br>
-${The answers and reason}
+<summary>${Question}</summary><br>
+${The answer and reasoning}
 </details>
 
-## 📜 License (Must)
+## 📜 License
 
-> 📌 Add license declaration and link to license files
+> 📌 Add license declaration and a link to the license file
+
