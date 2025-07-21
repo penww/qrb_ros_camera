@@ -18,8 +18,6 @@
 > - Highlight key features
 > - Important information
 
-**Project Architecture**
-
 > 📌 **Architecture diagrams**
 > - The high-level architecture with layers, components and relationship
 
