@@ -167,11 +167,16 @@ int QCarCamCamera::start_camera()
   // ------------------------------------------------------------------
   QCarCamOpen_t open_params = {};
   open_params.opMode              = QCARCAM_OPMODE_ISP;
-  open_params.numInputs           = 1;
-  open_params.inputs[0].inputId   = camera_id_;
-  open_params.inputs[0].srcId     = 0;
-  open_params.inputs[0].inputMode = 0;
   open_params.flags              |= QCARCAM_OPEN_FLAGS_REQUEST_MODE;
+
+  // config for each stream
+  const uint32_t num_contexts = static_cast<uint32_t>(stream_params_.size());
+  open_params.numInputs = num_contexts;
+  for (uint32_t i = 0; i < num_contexts && i < QCARCAM_MAX_INPUT_STREAMS; ++i) {
+    open_params.inputs[i].inputId   = camera_id_;
+    open_params.inputs[i].srcId     = 0;
+    open_params.inputs[i].inputMode = i;
+  }
 
   for (uint32_t i = 0; i < QCARCAM_MAX_OPEN_RETRY; ++i) {
     ret = QCarCamOpen(&open_params, &handle_);
@@ -191,9 +196,9 @@ int QCarCamCamera::start_camera()
   // ------------------------------------------------------------------
   // Step 3: SetParam – ISP usecase
   // ------------------------------------------------------------------
-  isp_config_.cameraId = static_cast<QCarCamIspUsecase_e>(0);
-  isp_config_.id = static_cast<QCarCamIspUsecase_e>(0);
-  isp_config_.usecaseId = static_cast<QCarCamIspUsecase_e>(QCARCAM_ISP_USECASE);
+  isp_config_.id        = 0;
+  isp_config_.cameraId  = 0;
+  isp_config_.usecaseId = QCARCAM_ISP_USECASE_PREVIEW;
   ret = QCarCamSetParam(handle_,
                         QCARCAM_STREAM_CONFIG_PARAM_ISP_USECASE,
                         &isp_config_, sizeof(isp_config_));
@@ -237,8 +242,8 @@ int QCarCamCamera::start_camera()
   // vector reallocation that would invalidate buf_list_.pBuffers
   // (which points into each stream's internal buffers_[] array).
   //
-  // buf_list_.id is set to the stream index before QCarCamSetBuffers so
-  // that FRAME_READY routing works even if the driver does not change it.
+  // buf_list_.id is set to (stream_index + 1) before QCarCamSetBuffers so
+  // each stream has a unique bufferlist id and FRAME_READY routing works.
   // ------------------------------------------------------------------
   {
     auto resubmit_fn = [this](uint32_t blid, uint32_t idx) {
@@ -264,7 +269,8 @@ int QCarCamCamera::start_camera()
         return -1;
       }
 
-      st.buf_list().id = QCARCAM_BUFFERLIST_TYPE;
+      // Each stream must have a unique bufferlist id.  Use 1-based stream index
+      st.buf_list().id = static_cast<uint32_t>(s + 1);
 
       ret = QCarCamSetBuffers(handle_, &st.buf_list());
       if (ret != QCARCAM_RET_OK) {

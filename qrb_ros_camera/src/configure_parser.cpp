@@ -44,8 +44,8 @@ bool ConfigureParser::init()
     uint32_t height = node_handler_->declare_parameter(stream_name[i] + ".height", 1080);
     uint32_t width = node_handler_->declare_parameter(stream_name[i] + ".width", 1920);
     uint32_t fps = node_handler_->declare_parameter(stream_name[i] + ".fps", 30);
-
-    std::string format = "nv12";
+    std::string format = node_handler_->declare_parameter(stream_name[i] + ".format",
+                                                          std::string("nv12"));
 
     camera_.stream_names.push_back(stream_name[i]);
     camera_.stream_formats.push_back(format);
