@@ -173,6 +173,7 @@ struct StreamParam
   int32_t orientation;
   std::string name;
   uint32_t bufferlist_id = 0;
+  uint32_t sensor_mode = UINT32_MAX;
 };
 
 struct CameraParam
@@ -181,6 +182,7 @@ struct CameraParam
   std::vector<StreamParam> snapshot_params;
   std::vector<StreamParam> video_params;
   uint32_t isp_usecase = 0;
+  uint32_t input_mode = 0;
 };
 
 enum class CameraType

@@ -90,6 +90,7 @@ void QCarCamCamera::set_param(std::vector<CameraParam> & param)
   isp_config_.id = 0;
   isp_config_.cameraId = 0;
   isp_config_.usecaseId = static_cast<QCarCamIspUsecase_e>(param[0].isp_usecase);
+  input_mode_ = param[0].input_mode;
 
   std::cout << "[INFO] [" << logger_ << "]: set_param: " << stream_params_.size() << " stream(s)"
             << std::endl;
@@ -177,7 +178,7 @@ int QCarCamCamera::start_camera()
   for (uint32_t i = 0; i < num_contexts && i < QCARCAM_MAX_INPUT_STREAMS; ++i) {
     open_params.inputs[i].inputId = camera_id_;
     open_params.inputs[i].srcId = 0;
-    open_params.inputs[i].inputMode = i;
+    open_params.inputs[i].inputMode = input_mode_;
   }
 
   for (uint32_t i = 0; i < QCARCAM_MAX_OPEN_RETRY; ++i) {
@@ -282,6 +283,22 @@ int QCarCamCamera::start_camera()
       std::cout << "[INFO] [" << logger_ << "]: QCarCamSetBuffers stream[" << s << "] name='"
                 << st.stream_name() << "' bufferlist_id=" << st.buf_list_id() << std::endl;
     }
+  }
+
+  // ------------------------------------------------------------------
+  // Step 6a: SetParam – sensor_mode (optional, after all SetBuffers)
+  // Taken from stream[0]; UINT32_MAX means no SetParam needed.
+  // ------------------------------------------------------------------
+  if (!stream_params_.empty() && stream_params_[0].sensor_mode != UINT32_MAX) {
+    uint32_t sm = stream_params_[0].sensor_mode;
+    ret = QCarCamSetParam(handle_, QCARCAM_STREAM_CONFIG_PARAM_INPUT_MODE, &sm, sizeof(sm));
+    if (ret != QCARCAM_RET_OK) {
+      std::cout << "[ERROR] [" << logger_ << "]: SetParam INPUT_MODE(sensor_mode=" << sm
+                << ") failed: " << ret << std::endl;
+      cleanup();
+      return -1;
+    }
+    std::cout << "[INFO] [" << logger_ << "]: SetParam sensor_mode=" << sm << " OK" << std::endl;
   }
 
   // ------------------------------------------------------------------

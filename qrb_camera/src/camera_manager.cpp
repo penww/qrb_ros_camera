@@ -98,30 +98,28 @@ void CameraManager::convert_detail_to_param(int index, std::vector<CameraParam> 
     uint32_t blid = (j < static_cast<int>((*it)->stream_bufferlist_ids.size())) ?
                         (*it)->stream_bufferlist_ids[j] :
                         0;
+    uint32_t sensor_mode = (j < static_cast<int>((*it)->stream_sensor_modes.size())) ?
+                               (*it)->stream_sensor_modes[j] :
+                               UINT32_MAX;
+
+    StreamParam stream_pam;
+    stream_pam.width = (*it)->stream_widths[j];
+    stream_pam.height = (*it)->stream_heights[j];
+    stream_pam.frame_rate = (*it)->stream_fps[j];
+    stream_pam.format = (*it)->stream_formats[j];
+    stream_pam.name = (*it)->stream_names[j];
+    stream_pam.bufferlist_id = blid;
+    stream_pam.sensor_mode = sensor_mode;
 
     if ((*it)->stream_type[j] == StreamType::Track) {
-      StreamParam stream_pam;
-      stream_pam.width = (*it)->stream_widths[j];
-      stream_pam.height = (*it)->stream_heights[j];
-      stream_pam.frame_rate = (*it)->stream_fps[j];
-      stream_pam.format = (*it)->stream_formats[j];
-      stream_pam.name = (*it)->stream_names[j];
-      stream_pam.bufferlist_id = blid;
       camera_pam.track_params.push_back(stream_pam);
-
     } else if ((*it)->stream_type[j] == StreamType::Snapshot) {
-      StreamParam stream_pam;
-      stream_pam.width = (*it)->stream_widths[j];
-      stream_pam.height = (*it)->stream_heights[j];
-      stream_pam.frame_rate = (*it)->stream_fps[j];
-      stream_pam.format = (*it)->stream_formats[j];
-      stream_pam.name = (*it)->stream_names[j];
-      stream_pam.bufferlist_id = blid;
       camera_pam.snapshot_params.push_back(stream_pam);
     }
   }
 
   camera_pam.isp_usecase = (*it)->isp_usecase;
+  camera_pam.input_mode = (*it)->input_mode;
 
   param.push_back(camera_pam);
 }
