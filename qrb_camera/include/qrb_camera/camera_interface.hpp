@@ -173,7 +173,6 @@ struct StreamParam
   int32_t orientation;
   std::string name;
   uint32_t bufferlist_id = 0;
-  uint32_t sensor_mode = UINT32_MAX;
 };
 
 struct CameraParam

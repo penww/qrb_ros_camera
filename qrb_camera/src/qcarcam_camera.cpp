@@ -286,22 +286,6 @@ int QCarCamCamera::start_camera()
   }
 
   // ------------------------------------------------------------------
-  // Step 6a: SetParam – sensor_mode (optional, after all SetBuffers)
-  // Taken from stream[0]; UINT32_MAX means no SetParam needed.
-  // ------------------------------------------------------------------
-  if (!stream_params_.empty() && stream_params_[0].sensor_mode != UINT32_MAX) {
-    uint32_t sm = stream_params_[0].sensor_mode;
-    ret = QCarCamSetParam(handle_, QCARCAM_STREAM_CONFIG_PARAM_INPUT_MODE, &sm, sizeof(sm));
-    if (ret != QCARCAM_RET_OK) {
-      std::cout << "[ERROR] [" << logger_ << "]: SetParam INPUT_MODE(sensor_mode=" << sm
-                << ") failed: " << ret << std::endl;
-      cleanup();
-      return -1;
-    }
-    std::cout << "[INFO] [" << logger_ << "]: SetParam sensor_mode=" << sm << " OK" << std::endl;
-  }
-
-  // ------------------------------------------------------------------
   // Step 6: Reserve – AFTER all SetBuffers, BEFORE Start.
   //   Matches qcarcam_test.cpp.
   // ------------------------------------------------------------------
